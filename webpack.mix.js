@@ -11,5 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.scripts([
+            'resources/assets/js/vue-2.3.4.js',
+            'resources/assets/js/axios-v0.16.2.js',
+            'resources/assets/js/app.js',
+        ],
+        'public/js/app.js')
+    // mix.js('resources/assets/js/app.js', 'public/js')
+    // .sass('resources/assets/sass/app.scss', 'public/css');
