@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
 
-class TaskControler extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class TaskControler extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::get();
+
+        return $tasks;
     }
 
     /**
@@ -56,7 +59,9 @@ class TaskControler extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return $task;
     }
 
     /**
@@ -79,6 +84,7 @@ class TaskControler extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::fidnOrFail($id);
+        $task->delete();
     }
 }
