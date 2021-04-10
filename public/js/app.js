@@ -11288,19 +11288,25 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 //# sourceMappingURL=axios.map
-var urlUsers = 'https://jsonplaceholder.typicode.com/users';
+// const { default: Axios } = require("axios");
+
+// var urlUsers = 'https://jsonplaceholder.typicode.com/users';
 new Vue({
-    el: '#main',
+    el: '#crud',
     created: function() {
-        this.getUsers();
+        this.getKeeps();
     },
     data: {
-        lists: []
+        keeps: []
     },
     methods: {
-        getUsers: function() {
-            axios.get(urlUsers).then(response => {
-                this.lists = response.data;
+        getKeeps: function() {
+            var urlKeeps = 'tasks';
+
+            axios.get(urlKeeps).then((response) => {
+                this.keeps = response.data;
+            }).catch((err) => {
+
             });
         }
     }
