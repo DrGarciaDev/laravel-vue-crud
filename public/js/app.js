@@ -23,6 +23,7 @@ new Vue({
 
             axios.delete(url).then((response) => {
                 this.getKeeps();
+                toastr.success('Eliminado correctamente');
             }).catch((err) => {
                 alert('Algo ocurrio al eliminar' + err);
             });

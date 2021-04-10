@@ -12,10 +12,17 @@ let mix = require('laravel-mix');
  */
 
 mix.scripts([
+            'resources/assets/js/jquery-3.2.1.js',
+            'resources/assets/js/bootstrap-3.3.7.js',
+            'resources/assets/js/toastr-2.1.4.js',
             'resources/assets/js/vue-2.3.4.js',
             'resources/assets/js/axios-v0.16.2.js',
             // 'resources/assets/js/app.js',
         ],
         'public/js/libs.js')
-    // mix.js('resources/assets/js/app.js', 'public/js')
-    // .sass('resources/assets/sass/app.scss', 'public/css');
+    .styles([
+        'resources/assets/css/bootstrap-3.3.7.css',
+        'resources/assets/css/toastr-2.1.4.css',
+    ], 'public/css/app.css');
+// mix.js('resources/assets/js/app.js', 'public/js')
+// .sass('resources/assets/sass/app.scss', 'public/css');
