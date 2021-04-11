@@ -26,7 +26,18 @@ new Vue({
             $('#edit').modal('show');
         },
         updateKeep: function(id) {
-            alert(id);
+            // alert(id);
+            var url = 'tasks/' + id;
+
+            axios.put(url, this.fillKeep).then((response) => {
+                this.getKeeps();
+                this.fillKeep = { 'id': '', 'keep': '' };
+                this.errors = [];
+                $('#edit').modal('hide');
+                toastr.success('Tarea actualizada...');
+            }).catch((error) => {
+                this.errors = error.response.data;
+            });
         },
         deleteKeep: function(keep) {
             alert(keep.id)
