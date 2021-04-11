@@ -40,15 +40,17 @@ new Vue({
             });
         },
         deleteKeep: function(keep) {
-            alert(keep.id)
-            var url = 'tasks/' + keep.id;
+            if (confirm('Realmente desea elimiar esta tarea')) {
+                console.log(keep.id);
+                var url = 'tasks/' + keep.id;
 
-            axios.delete(url).then((response) => {
-                this.getKeeps();
-                toastr.success('Eliminado correctamente');
-            }).catch((err) => {
-                alert('Algo ocurrio al eliminar' + err);
-            });
+                axios.delete(url).then((response) => {
+                    this.getKeeps();
+                    toastr.success('Eliminado correctamente');
+                }).catch((err) => {
+                    alert('Algo ocurrio al eliminar' + err);
+                });
+            }
         },
         createKeep: function() {
             var url = 'tasks';
