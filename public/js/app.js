@@ -5,7 +5,9 @@ new Vue({
         this.getKeeps();
     },
     data: {
-        keeps: []
+        keeps: [],
+        newKeep: '',
+        errors: [],
     },
     methods: {
         getKeeps: function() {
@@ -26,6 +28,21 @@ new Vue({
                 toastr.success('Eliminado correctamente');
             }).catch((err) => {
                 alert('Algo ocurrio al eliminar' + err);
+            });
+        },
+        createKeep: function() {
+            var url = 'tasks';
+            axios.post(url, {
+                keep: this.newKeep
+            }).then((response) => {
+                this.getKeeps();
+                this.newKeep = '';
+                this.errors = [];
+                $('#create').modal('hide');
+                toastr.success('Tarea creada...');
+            }).catch((err) => {
+                // alert('Algo ocurrio al crear' + err);
+                this.errors = error.response.data;
             });
         }
     }
